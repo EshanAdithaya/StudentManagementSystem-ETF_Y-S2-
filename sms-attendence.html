@@ -22,6 +22,31 @@
         #green a.active {
     background-color: #4CAF50; /* Green background color */
     color: white; /* White text color */}
+    table {
+    /* Step 2: Apply the border property */
+    border: 1px solid black;
+    margin: auto;
+}
+
+table tr, table td, table th {
+    border: 1px solid black;
+}
+/* Step 1: Center the table */
+
+/* Step 2: Change the color of the table headers */
+table th {
+    background-color: #b2beb5; /* light ash color */
+    color: black; /* text color */
+}
+
+/* Step 3: Ensure the table data stays the default color */
+table td {
+    color: black; /* default color */
+}
+h1 {
+    
+    text-align: center;
+}
 	</style>
 </head>
 <!-- End of the head -->
@@ -61,12 +86,22 @@
             
         </div>
         <div class="col-10" style="text-align: justify;">
-            Bootstrap is a free and open-source
-            tool collection for creating responsive
-            websites and web applications. It
-            is the most popular HTML, CSS, and
-            JavaScript framework for developing
-            responsive, mobile-first web sites.
+            <h1> Attendance</h1> <br><br>
+            <!-- Step 1: Add an input field for the search query -->
+<input type="text" id="searchQuery" placeholder="Search...">
+
+<!-- Step 2: Add a button to trigger the search -->
+<button type="submit" id="searchButton">Search</button>  <br> 
+           <table ><tr><th>Class</th>
+            <th>Student ID</th>
+            <th>Student Name</th>
+            <th>Date</th>
+        </tr><tr>
+            <td>Sample data</td>
+            <td>Sample data</td>
+            <td>Sample data</td>
+        </tr>
+        </table>
         </div>
     </div>
 </div>
