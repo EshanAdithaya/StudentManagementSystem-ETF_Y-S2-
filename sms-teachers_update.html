@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- beginning of the head -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title >Student Managemet System</title>
+     <!-- bootstrap-->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+     <style type="text/css">
+		html,
+		body {
+			height: 100%;
+		}
+		#green {
+			height: 100%;
+			background: rgb(255, 255, 255);
+			text-align: center;
+			color: black;
+		}
+        #green a.active {
+    background-color: #4CAF50; /* Green background color */
+    color: white; /* White text color */}
+
+    .nav a {
+    margin-right: 10px; /* Adjust the right margin to control space between icons */
+    display: flex;
+    align-items: center; /* Align icon and text vertically */
+    text-decoration: none;
+    color: #000; /* Set the color of the text */
+  }
+
+  .nav img {
+    margin-right: 5px; /* Adjust the right margin to control space between image and text */
+  }
+  .nav a.actives {
+    background-color: #46a9eb; /* Set the background color for the active link */
+  }
+	</style>
+</head>
+<!-- End of the head -->
+<!-- beginning of the Body -->
+<body>
+    <!-- start of upper nav link-->
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="sms_index.html">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Teachers</li>
+        </ol>
+      </nav>
+      <!-- start of upper nav link-->
+<!-- beginning of the navbar -->
+<div class="container-fluid h-100">
+    <div class="row h-100">
+        <div class="col-2" id="green">
+            <a href="sms_index.html">
+                <h4><img src="asset/image/branding/name.png" width="140" height="100"></h4></a>
+            <!-- Navigation links in sidebar-->
+            <a href="#" ><img src="asset/image/local/stunavbar/graduated.png" width="40" height="40"><br><h6>Students</h6></a>
+            
+            <br/>
+            <a href="sms-attendence.html"><img src="asset/image/local/stunavbar/attendant-list.png" width="40" height="40"><h6>Attendance</h6></a>
+            
+            <br/>
+            <a href="sms_payments.html"><img src="asset/image/local/stunavbar/payment-method.png" width="40" height="40"><h6>Payments</h6></a>
+            
+            <br/>
+            <a href="sms-class.html"><img src="asset/image/local/stunavbar/presentation.png" width="40" height="40"><h6>Classes</h6></a>
+            
+            <br/>
+            <a href="sms-teachers.html" class="active"><img src="asset/image/local/stunavbar/teacher.png" width="40" height="40"><h6>Teacher</h6></a>
+            <br/>
+            
+        </div>
+        <!-- in this div you have to make the changes-->
+        <div class="col-10" style="text-align: justify;">
+            <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+                <ul class="nav">
+                  <a href="sms_student.html" >
+                    <img src="asset/image/local/stunavbar/add-item.png" width="40" height="40">
+                    <h6>Create</h6>
+                  </a>
+                  <a href="#">
+                    <h6>|</h6>
+                  </a>
+                  <a href="sms_student_update.html" class="actives">
+                    <img src="asset/image/local/stunavbar/turn.png" width="40" height="40">
+                    <h6>Update</h6>
+                  </a>
+                  <a href="#">
+                    <h6>|</h6>
+                  </a>
+                  <a href="sms_student_view.html" >
+                    <img src="asset/image/local/stunavbar/find.png" width="40" height="40">
+                    <h6>View</h6>
+                  </a>
+                  <a href="#">
+                    <h6>|</h6>
+                  </a>
+                  <a href="sms_student_delete.html">
+                    <img src="asset/image/local/stunavbar/delete.png" width="40" height="40">
+                    <h6>Delete</h6>
+                  </a>
+                  <a href="#">
+                    <h6>|</h6>
+                  </a>
+                </ul>
+            </nav>
+            <H1>Update Teachers Registration Form</H1>
+            <form>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">ID which you want to update:</label>
+                    <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Your First name">
+                  </div>
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Name (please enter with initials):</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Your First name">
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Email Address:</label>
+                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Your First name">
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Contact Number:</label>
+                <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Your First name">
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Date of Birth:</label>
+                <input type="date" class="form-control" id="exampleFormControlInput1" placeholder="Your First name">
+              </div>
+              <div class="form-group">
+                <label>Gender:</label><br>
+                <input type="radio" id="male" name="gender" value="male">
+                <label for="male">Male</label><br>
+                <input type="radio" id="female" name="gender" value="female">
+                <label for="female">Female</label>
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlInput1">Address:</label>
+              <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Your First name">
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlInput1">Qualification:</label>
+              <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Your First name">
+            </div>
+            <div class="form-group">
+              <label>Subjects:</label><br>
+              <input type="checkbox" id="computerScience" name="subject" value="Computer Science">
+              <label for="computerScience">Computer Science</label><br>
+              <input type="checkbox" id="electricalEngineering" name="subject" value="Electrical Engineering">
+              <label for="electricalEngineering">Electrical Engineering</label><br>
+              <input type="checkbox" id="mechanicalEngineering" name="subject" value="Mechanical Engineering">
+              <label for="mechanicalEngineering">Mechanical Engineering</label><br>
+              <input type="checkbox" id="businessAdministration" name="subject" value="Business Administration">
+              <label for="businessAdministration">Business Administration</label><br>
+              <input type="checkbox" id="psychology" name="subject" value="Psychology">
+              <label for="psychology">Psychology</label><br>
+              <input type="checkbox" id="englishLiterature" name="subject" value="English Literature">
+              <label for="englishLiterature">English Literature</label><br>
+              <input type="checkbox" id="mathematics" name="subject" value="Mathematics">
+              <label for="mathematics">Mathematics</label><br>
+              <input type="checkbox" id="physics" name="subject" value="Physics">
+              <label for="physics">Physics</label><br>
+              <input type="checkbox" id="chemistry" name="subject" value="Chemistry">
+              <label for="chemistry">Chemistry</label><br>
+              <input type="checkbox" id="biology" name="subject" value="Biology">
+              <label for="biology">Biology</label><br>
+              <input type="checkbox" id="history" name="subject" value="History">
+              <label for="history">History</label><br>
+              <input type="checkbox" id="economics" name="subject" value="Economics">
+              <label for="economics">Economics</label><br>
+              <input type="checkbox" id="politicalScience" name="subject" value="Political Science">
+              <label for="politicalScience">Political Science</label><br>
+              <input type="checkbox" id="environmentalScience" name="subject" value="Environmental Science">
+              <label for="environmentalScience">Environmental Science</label><br>
+              <input type="checkbox" id="medicalScience" name="subject" value="Medical Science">
+              <label for="medicalScience">Medical Science</label><br>
+              <input type="checkbox" id="law" name="subject" value="Law">
+              <label for="law">Law</label><br>
+              <input type="checkbox" id="architecture" name="subject" value="Architecture">
+              <label for="architecture">Architecture</label><br>
+              <input type="checkbox" id="graphicDesign" name="subject" value="Graphic Design">
+              <label for="graphicDesign">Graphic Design</label><br>
+              <input type="checkbox" id="journalism" name="subject" value="Journalism">
+              <label for="journalism">Journalism</label><br>
+              <input type="checkbox" id="internationalRelations" name="subject" value="International Relations">
+              <label for="internationalRelations">International Relations</label><br>
+              <input type="checkbox" id="marketing" name="subject" value="Marketing">
+              <label for="marketing">Marketing</label><br>
+              <input type="checkbox" id="finance" name="subject" value="Finance">
+              <label for="finance">Finance</label><br>
+              <input type="checkbox" id="humanResourceManagement" name="subject" value="Human Resource Management">
+              <label for="humanResourceManagement">Human Resource Management</label>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Years of Experience:</label>
+            <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Your First name">
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Previous Institution (if any):</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Your First name">
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Profile Picture (optional):</label>
+            <input type="file" class="form-control" id="exampleFormControlInput1" placeholder="Your First name">
+           </div>
+          
+           <button type="button" class="btn btn-primary btn-lg" onclick="confirmUpload()">Submit</button>
+
+                  <!-- 
+
+
+-->
+              </form>
+        </div>
+    </div>
+    
+</div>
+<!-- End of the navbar -->
+
+<!-- beginning of the Footer -->
+
+<!-- End of the Footer -->
+<!-- bootstrap js-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script>
+  document.querySelector("#captureButton").addEventListener("click", function() {
+      document.querySelector("#capture").click();
+  });
+  function confirmUpload() {
+        if (confirm("Are you sure you want to upload?")) {
+            // User clicked 'OK', upload the data
+        } else {
+            // User clicked 'Cancel', do nothing
+        }
+    }
+</script>
+</body>
+<!-- End of the Body -->
+</html>
