@@ -1,0 +1,17 @@
+{
+  "name": "studentmanagementsystem-etf_y-s2-",
+  "version": "1.0.0",
+  "description": "wad assignment student management system for Year 1 semester2 final project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.6.5"
+  }
+}
