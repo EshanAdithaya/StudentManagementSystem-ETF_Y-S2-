@@ -1,27 +1,64 @@
-// server.js
-
 const express = require('express');
-const bodyParser = require('body-parser');
+const mysql = require('mysql2');
+const path = require('path');
 const app = express();
-const port = 3000;
+const PORT = 3000;
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-
-// Serve static files (HTML, CSS, JS)
-app.use(express.static('public'));
-
-// Handle signup POST request
-app.post('/signup', (req, res) => {
-    // Process signup data here (insert into the 'users' table)
-    const userData = req.body;
-    // Implement your database logic to insert userData into the 'users' table
-
-    // Respond with a JSON message
-    res.json({ message: 'Signup successful' });
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: '',
+  database: 'studentmanagementsystem',
 });
 
-// Start the server
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
+connection.connect((err) => {
+  if (err) {
+    console.error('Error connecting to MySQL database:', err);
+  } else {
+    console.log('Connected to MySQL database');
+  }
+});
+
+// Serve static files from the root directory
+app.use(express.static(__dirname));
+
+// Define routes to fetch data from your database
+
+app.get('/api/students', (req, res) => {
+  connection.query('SELECT * FROM students', (error, results) => {
+    if (error) {
+      console.error('Error executing MySQL query:', error);
+      res.status(500).send('Internal Server Error');
+    } else {
+      res.json(results);
+    }
+  });
+});
+
+app.get('/api/students/:id', (req, res) => {
+  const studentId = req.params.id;
+  connection.query('SELECT * FROM students WHERE sID = ?', [studentId], (error, results) => {
+    if (error) {
+      console.error('Error executing MySQL query:', error);
+      res.status(500).send('Internal Server Error');
+    } else if (results.length === 0) {
+      res.status(404).send('Student not found');
+    } else {
+      res.json(results[0]);
+    }
+  });
+});
+
+// New route to serve the login page
+app.get('/login', (req, res) => {
+  res.sendFile(path.join(__dirname, 'login.html'));
+});
+
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});
+
+process.on('SIGINT', () => {
+  connection.end();
+  process.exit();
 });
