@@ -1,9 +1,11 @@
 const express = require('express');
 const mysql = require('mysql2');
 const path = require('path');
+const bodyParser = require('body-parser');
 const app = express();
 const PORT = 3000;
 
+// Create a MySQL connection
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
@@ -11,6 +13,7 @@ const connection = mysql.createConnection({
   database: 'studentmanagementsystem',
 });
 
+// Connect to the MySQL database
 connection.connect((err) => {
   if (err) {
     console.error('Error connecting to MySQL database:', err);
@@ -21,9 +24,9 @@ connection.connect((err) => {
 
 // Serve static files from the root directory
 app.use(express.static(__dirname));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Define routes to fetch data from your database
-
 app.get('/api/students', (req, res) => {
   connection.query('SELECT * FROM students', (error, results) => {
     if (error) {
@@ -35,23 +38,19 @@ app.get('/api/students', (req, res) => {
   });
 });
 
-app.get('/api/students/:id', (req, res) => {
-  const studentId = req.params.id;
-  connection.query('SELECT * FROM students WHERE sID = ?', [studentId], (error, results) => {
+// Handle form submission
+app.post('/api/students/create', (req, res) => {
+  const formData = req.body;
+
+  // Insert data into the 'students' table
+  connection.query('INSERT INTO students SET ?', formData, (error, results) => {
     if (error) {
       console.error('Error executing MySQL query:', error);
       res.status(500).send('Internal Server Error');
-    } else if (results.length === 0) {
-      res.status(404).send('Student not found');
     } else {
-      res.json(results[0]);
+      res.send('Student created successfully');
     }
   });
-});
-
-// New route to serve the login page
-app.get('/login', (req, res) => {
-  res.sendFile(path.join(__dirname, 'login.html'));
 });
 
 app.listen(PORT, () => {
