@@ -144,6 +144,7 @@
                         </div>
                     </div>
                     <button type="button" class="btn btn-primary btn-lg btn-search" onclick="searchStudent()">Search</button>
+                    <button type="button" class="btn btn-primary btn-lg btn-delete" onclick="deleteStudent()">Delete</button>
                 </form>
             </div>
         </div>
@@ -159,6 +160,28 @@
             // Fetch logic or redirect to another page
             // Example: window.location.href = '/search?studentId=' + document.getElementById('studentId').value;
             alert('Implement your search logic here');
+        }
+
+        function deleteStudent() {
+            const studentId = document.getElementById('studentId').value;
+
+            // Make a POST request to delete the student by ID
+            fetch('/api/students/delete', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ studentId }),
+            })
+            .then(response => response.text())
+            .then(message => {
+                alert(message);
+                // You can redirect or perform any additional logic after successful deletion
+            })
+            .catch(error => {
+                console.error('Error deleting student:', error);
+                alert('Error deleting student');
+            });
         }
     </script>
 </body>

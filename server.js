@@ -57,7 +57,7 @@ app.post('/api/teachers/create', (req, res) => {
 
 // Handle form submission for updating a student
 app.post('/api/students/update', (req, res) => {
-  const studentId = req.body.studentId;
+  const studentId = req.body.sID; // Change to sID
   const formData = req.body;
 
   // Perform update logic here
@@ -82,6 +82,69 @@ app.get('/api/students', (req, res) => {
       console.log('Students fetched successfully:', results);
       // Send the list of students as JSON response
       res.json(results);
+    }
+  });
+});
+
+// Handle request to get information about a specific student
+app.get('/api/students/:studentId', (req, res) => {
+  const studentId = req.params.studentId;
+
+  // Fetch the student with the given ID from the database
+  connection.query('SELECT * FROM students WHERE sID = ?', studentId, (error, results) => {
+    if (error) {
+      console.error('Error executing MySQL query:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    } else {
+      if (results.length === 0) {
+        res.status(404).json({ error: 'Student not found' });
+      } else {
+        console.log(`Student with ID ${studentId} fetched successfully:`, results[0]);
+        // Send the student information as JSON response
+        res.json(results[0]);
+      }
+    }
+  });
+});
+
+// Handle form submission for deleting a student
+app.post('/api/students/delete', (req, res) => {
+  const studentId = req.body.studentId;
+
+  // Delete the student by ID using a parameterized query
+  const deleteQuery = 'DELETE FROM students WHERE sID = ?';
+
+  // Perform the deletion
+  connection.query(deleteQuery, [studentId], (error, results) => {
+    if (error) {
+      console.error('Error deleting student:', error);
+      res.status(500).send('Internal Server Error');
+    } else {
+      res.status(200).send(`Student with ID ${studentId} deleted successfully`);
+    }
+  });
+});
+
+// Handle form submission for searching a student
+app.post('/api/students/search', (req, res) => {
+  const studentId = req.body.studentId;
+
+  // Search for the student by ID using a parameterized query
+  const searchQuery = 'SELECT * FROM students WHERE sID = ?';
+
+  // Perform the search
+  connection.query(searchQuery, [studentId], (error, results) => {
+    if (error) {
+      console.error('Error searching for student:', error);
+      res.status(500).send('Internal Server Error');
+    } else {
+      if (results.length === 0) {
+        res.status(404).json({ error: 'Student not found' });
+      } else {
+        console.log(`Student with ID ${studentId} found:`, results[0]);
+        // Send the student information as JSON response
+        res.json(results[0]);
+      }
     }
   });
 });
