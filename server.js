@@ -43,21 +43,9 @@ app.post('/api/students/create', (req, res) => {
 // Handle form submission for updating a student
 app.post('/api/students/update', (req, res) => {
   const studentId = req.body.studentId;
-  const formData = {
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    email: req.body.email,
-    phoneNumber: req.body.telephone,
-    dateOfBirth: req.body.dateOfBirth,
-    district: req.body.district,
-    course: req.body.course,
-    guardian: req.body.guardian,
-    emergencyContact: req.body.emergencyContact,
-    additionalInfo: req.body.additionalInfo,
-    profilePicture: req.body.profilePicture,
-  };
+  const formData = req.body;
 
-  // Update the student in the 'students' table
+  // Perform update logic here
   connection.query('UPDATE students SET ? WHERE sID = ?', [formData, studentId], (error, results) => {
     if (error) {
       console.error('Error executing MySQL query:', error);
@@ -78,6 +66,21 @@ app.get('/api/teachers', (req, res) => {
     } else {
       console.log('Teachers fetched successfully:', results);
       // Send the list of teachers as JSON response
+      res.json(results);
+    }
+  });
+});
+
+// Handle request to get all students
+app.get('/api/students', (req, res) => {
+  // Fetch all students from the database
+  connection.query('SELECT id, firstName, lastName, email FROM students', (error, results) => {
+    if (error) {
+      console.error('Error executing MySQL query:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    } else {
+      console.log('Students fetched successfully:', results);
+      // Send the list of students as JSON response
       res.json(results);
     }
   });
