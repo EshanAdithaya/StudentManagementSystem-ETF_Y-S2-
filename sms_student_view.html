@@ -152,33 +152,30 @@
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
     crossorigin="anonymous"></script>
 
-    <!-- ... Your HTML code ... -->
-
-<!-- ... Your HTML code ... -->
-
-<script>
-  // Fetch data from the server and populate the table
-  fetch('http://localhost:3000/api/students')
-    .then(response => response.json())
-    .then(data => {
-      const tableBody = document.querySelector('tbody');
-      data.forEach(student => {
-        const row = document.createElement('tr');
-        row.innerHTML = `<td>${students.sID}</td>
-                         <td>${students.firstName}</td>
-                         <td>${students.lastName}</td>
-                         <td>${students.email}</td>`;
-        // Add more columns as needed
-        tableBody.appendChild(row);
+    <script>
+      // Fetch and populate data here
+      document.addEventListener('DOMContentLoaded', function () {
+        fetch('/api/students')
+          .then(response => response.json())
+          .then(students => {
+            const tbody = document.querySelector('table tbody');
+            tbody.innerHTML = '';
+    
+            students.forEach(student => {
+              const row = document.createElement('tr');
+              row.innerHTML = `
+                <td>${student.sID}</td>
+                <td>${student.firstName}</td>
+                <td>${student.lastName}</td>
+                <td>${student.email}</td>
+                <!-- Add more columns as needed -->
+              `;
+              tbody.appendChild(row);
+            });
+          })
+          .catch(error => console.error('Error fetching data:', error));
       });
-    })
-    .catch(error => console.error('Error fetching data:', error));
-</script>
-
-<!-- ... Rest of your HTML code ... -->
-
-
-<!-- ... Rest of your HTML code ... -->
+    </script>
 
 </body>
 
