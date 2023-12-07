@@ -129,7 +129,6 @@
             </a>
           </ul>
         </nav>
-        <h1>Student view Table</h1>
         <h1>Student Table</h1>
         <table class="table">
           <thead>
@@ -153,24 +152,34 @@
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
     crossorigin="anonymous"></script>
 
-    <script>
-      // Fetch data from the server and populate the table
-      fetch('http://localhost:3000/api/students')
-        .then(response => response.json())
-        .then(data => {
-          const tableBody = document.querySelector('tbody');
-          data.forEach(student => {
-            const row = document.createElement('tr');
-            row.innerHTML = `<td>${student.id}</td>
-                             <td>${student.firstName}</td>
-                             <td>${student.lastName}</td>
-                             <td>${student.email}</td>`;
-            // Add more columns as needed
-            tableBody.appendChild(row);
-          });
-        })
-        .catch(error => console.error('Error fetching data:', error));
-    </script>
+    <!-- ... Your HTML code ... -->
+
+<!-- ... Your HTML code ... -->
+
+<script>
+  // Fetch data from the server and populate the table
+  fetch('http://localhost:3000/api/students')
+    .then(response => response.json())
+    .then(data => {
+      const tableBody = document.querySelector('tbody');
+      data.forEach(student => {
+        const row = document.createElement('tr');
+        row.innerHTML = `<td>${students.sID}</td>
+                         <td>${students.firstName}</td>
+                         <td>${students.lastName}</td>
+                         <td>${students.email}</td>`;
+        // Add more columns as needed
+        tableBody.appendChild(row);
+      });
+    })
+    .catch(error => console.error('Error fetching data:', error));
+</script>
+
+<!-- ... Rest of your HTML code ... -->
+
+
+<!-- ... Rest of your HTML code ... -->
+
 </body>
 
 </html>
