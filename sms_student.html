@@ -108,30 +108,32 @@
                 </ul>
             </nav>
             <H1>Create Student Form</H1>
-            <form>
-                <div class="form-group">
-                  <label for="exampleFormControlInput1">First Name:</label>
-                  <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Your First name">
-                </div>
-                <div class="form-group">
-                    <label for="exampleFormControlInput1">Last Name:</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Your Last name">
-                  </div>
-                <div class="form-group">
-                    <label for="exampleFormControlInput1">Email address:</label>
-                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleFormControlInput1">Telephone number:</label>
-                    <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="07X XXX XXXX">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleFormControlInput1">Date of Birth:</label>
-                    <input type="date" class="form-control" id="exampleFormControlInput1" placeholder="Your First name">
-                  </div>
-                  <div class="form-group col-md-4">
-                    <label for="inputDistrict">District:</label>
-                    <select id="inputDistrict" class="form-control">
+            <!-- Your form -->
+    <form action="/api/students/create" method="post">
+      <div class="form-group">
+          <label for="firstName">First Name:</label>
+          <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Your First name">
+      </div>
+      <div class="form-group">
+          <label for="lastName">Last Name:</label>
+          <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Your Last name">
+      </div>
+      <div class="form-group">
+          <label for="email">Email address:</label>
+          <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
+      </div>
+      <div class="form-group">
+          <label for="phoneNumber">Telephone number:</label>
+          <input type="number" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="07X XXX XXXX">
+      </div>
+      <div class="form-group">
+          <label for="dateOfBirth">Date of Birth:</label>
+          <input type="date" class="form-control" id="dateOfBirth" name="dateOfBirth" placeholder="Your First name">
+      </div>
+      <div class="form-group">
+          <label for="inputDistrict">District:</label>
+          <select id="inputDistrict" class="form-control" name="district">
+              <!-- Your options here -->
                       <option selected>Choose...</option>
                       <option>Colombo</option>
                       <option>Gampaha</option>
@@ -157,11 +159,11 @@
                       <option>Maharagama</option>
                       <option>Kegalle</option>
                       <option>Ratnapura</option>
-                    </select>
-                  </div>
-                  <div class="form-group col-md-4">
-                    <label for="inputCourse">Course:</label>
-                    <select id="inputCourse" class="form-control">
+                </select>
+              </div>
+              <div class="form-group">
+                  <label for="inputCourse">Course:</label>
+                  <select id="inputCourse" class="form-control" name="course">
                       <option selected>Choose...</option>
                       <option>Computer Science</option>
                       <option>Electrical Engineering</option>
@@ -189,23 +191,22 @@
                     </select>
                   </div>
                   <div class="form-group">
-                    <label for="exampleFormControlInput1">Guardian:</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Your First name">
+                      <label for="guardian">Guardian:</label>
+                      <input type="text" class="form-control" id="guardian" name="guardian" placeholder="Your First name">
                   </div>
                   <div class="form-group">
-                    <label for="exampleFormControlInput1">Emergency Contact Information:</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Other Contact Information">
+                      <label for="emergencyContact">Emergency Contact Information:</label>
+                      <input type="text" class="form-control" id="emergencyContact" name="emergencyContact" placeholder="Other Contact Information">
                   </div>
                   <div class="form-group">
-                    <label for="exampleFormControlInput1">Additional Information:</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Additional Information">
+                      <label for="additionalInformation">Additional Information:</label>
+                      <input type="text" class="form-control" id="additionalInformation" name="additionalInformation" placeholder="Additional Information">
                   </div>
                   <div class="form-group">
-                    <label for="exampleFormControlInput1">Profile Picture (optional):</label>
-                    <input type="file" class="form-control" id="exampleFormControlInput1" placeholder="Your First name">
-                   </div>
-                
-                  <button type="button  " class="btn btn-primary btn-lg ">Submit</button>
+                      <label for="profilePicture">Profile Picture (optional):</label>
+                      <input type="file" class="form-control" id="profilePicture" name="profilePicture" placeholder="Your First name">
+                  </div>
+                  <button type="submit" class="btn btn-primary btn-lg">Submit</button>
               </form>
         </div>
     </div>
