@@ -25,7 +25,7 @@ connection.connect((err) => {
 app.use(express.static(__dirname));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Handle form submission
+// Handle form submission for creating a student
 app.post('/api/students/create', (req, res) => {
   const formData = req.body;
 
@@ -38,6 +38,17 @@ app.post('/api/students/create', (req, res) => {
       res.send('Student created successfully');
     }
   });
+});
+
+// Handle form submission for updating a student
+app.post('/api/students/update', (req, res) => {
+  const userId = req.body.userId; // Assuming 'userId' is the name attribute of your input field
+  const formData = req.body;
+
+  // Perform update logic here (e.g., update the student with the specified ID in your database)
+
+  // Send a response (you might want to send JSON indicating success/failure)
+  res.send(`Update student with ID ${userId}`);
 });
 
 app.listen(PORT, () => {
