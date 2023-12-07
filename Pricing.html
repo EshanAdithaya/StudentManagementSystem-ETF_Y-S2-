@@ -228,9 +228,6 @@ body::before {
   
 
 
-<<<<<<< HEAD
-
-=======
 <!----footer---->
 <div class="footer">
   <div class="container">
@@ -268,7 +265,6 @@ body::before {
       </div>
   </div>
 </div>
->>>>>>> 23b215287bc7158f3b9b1742fa2d96ab4201f86f
 
  
 <!-- Bootstrap JS and dependencies -->
@@ -312,6 +308,15 @@ body::before {
         </div>
     </div>
   </div>
+  <script>
+    // dom attribute modification
+    $(document).ready(function () {
+        $('#modifyLinkButton').on('click', function () {
+          $('#myLink').attr('href', 'login.html');
+        });
+      });
+      
+      </script>
 </body>
 <!-- End of the Body -->
 </html>
