@@ -42,13 +42,45 @@ app.post('/api/students/create', (req, res) => {
 
 // Handle form submission for updating a student
 app.post('/api/students/update', (req, res) => {
-  const userId = req.body.userId; // Assuming 'userId' is the name attribute of your input field
-  const formData = req.body;
+  const studentId = req.body.studentId;
+  const formData = {
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    email: req.body.email,
+    phoneNumber: req.body.telephone,
+    dateOfBirth: req.body.dateOfBirth,
+    district: req.body.district,
+    course: req.body.course,
+    guardian: req.body.guardian,
+    emergencyContact: req.body.emergencyContact,
+    additionalInfo: req.body.additionalInfo,
+    profilePicture: req.body.profilePicture,
+  };
 
-  // Perform update logic here (e.g., update the student with the specified ID in your database)
+  // Update the student in the 'students' table
+  connection.query('UPDATE students SET ? WHERE sID = ?', [formData, studentId], (error, results) => {
+    if (error) {
+      console.error('Error executing MySQL query:', error);
+      res.status(500).send('Internal Server Error');
+    } else {
+      res.send(`Update student with ID ${studentId} successful`);
+    }
+  });
+});
 
-  // Send a response (you might want to send JSON indicating success/failure)
-  res.send(`Update student with ID ${userId}`);
+// Handle request to get teachers
+app.get('/api/teachers', (req, res) => {
+  // Fetch teachers from the database
+  connection.query('SELECT id, name FROM teachers', (error, results) => {
+    if (error) {
+      console.error('Error executing MySQL query:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    } else {
+      console.log('Teachers fetched successfully:', results);
+      // Send the list of teachers as JSON response
+      res.json(results);
+    }
+  });
 });
 
 app.listen(PORT, () => {
