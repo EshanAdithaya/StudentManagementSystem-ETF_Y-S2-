@@ -25,7 +25,7 @@ connection.connect((err) => {
 app.use(express.static(__dirname));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Handle form submission
+// Handle form submission for creating a student
 app.post('/api/students/create', (req, res) => {
   const formData = req.body;
 
@@ -36,6 +36,49 @@ app.post('/api/students/create', (req, res) => {
       res.status(500).send('Internal Server Error');
     } else {
       res.send('Student created successfully');
+    }
+  });
+});
+
+// Handle form submission for updating a student
+app.post('/api/students/update', (req, res) => {
+  const studentId = req.body.studentId;
+  const formData = {
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    email: req.body.email,
+    phoneNumber: req.body.telephone,
+    dateOfBirth: req.body.dateOfBirth,
+    district: req.body.district,
+    course: req.body.course,
+    guardian: req.body.guardian,
+    emergencyContact: req.body.emergencyContact,
+    additionalInfo: req.body.additionalInfo,
+    profilePicture: req.body.profilePicture,
+  };
+
+  // Update the student in the 'students' table
+  connection.query('UPDATE students SET ? WHERE sID = ?', [formData, studentId], (error, results) => {
+    if (error) {
+      console.error('Error executing MySQL query:', error);
+      res.status(500).send('Internal Server Error');
+    } else {
+      res.send(`Update student with ID ${studentId} successful`);
+    }
+  });
+});
+
+// Handle request to get teachers
+app.get('/api/teachers', (req, res) => {
+  // Fetch teachers from the database
+  connection.query('SELECT id, name FROM teachers', (error, results) => {
+    if (error) {
+      console.error('Error executing MySQL query:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    } else {
+      console.log('Teachers fetched successfully:', results);
+      // Send the list of teachers as JSON response
+      res.json(results);
     }
   });
 });

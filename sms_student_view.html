@@ -108,18 +108,18 @@
                 </ul>
             </nav>
             <H1>Update View Form</H1>
-            <form>
+            <form action="/api/students/update" method="post">
               <div class="col-auto">
-                <label class="sr-only" for="inlineFormInputGroup">ID</label>
-                <div class="input-group mb-2">
-                  <div class="input-group-prepend">
-                    <div class="input-group-text">@</div>
+                  <label class="sr-only" for="userId">ID</label>
+                  <div class="input-group mb-2">
+                      <div class="input-group-prepend">
+                          <div class="input-group-text">@</div>
+                      </div>
+                      <input type="text" class="form-control" id="userId" name="userId" placeholder="User ID">
                   </div>
-                  <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="User ID">
-                </div>
               </div>
-                  <button type="button " class="btn btn-primary btn-lg">Submit</button>
-              </form>
+              <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+          </form>
         </div>
     </div>
     
