@@ -195,7 +195,8 @@ body::before {
                 Student Attendance Tracking<br>
               Course Management <br>
               Calender and  Scheduling</p>
-                  <a href="#" class="btn btn-primary">Purchase</a>
+                  <a href="#" class="btn btn-primary" id="replaceButton">Price will be</a>
+                  <div id="toBeReplaced" > <h3> . . . .</h3></div>
               </div>
           </div>
           <div class="card mt-3">
@@ -206,7 +207,8 @@ body::before {
                     Communication Tools<br>
                     Reports and Analytics<br>
                     Integration with Learning Materials</p>
-                  <a href="#" class="btn btn-primary">Purchase</a>
+                    <a href="#" class="btn btn-primary" id="replaceButton1">Price will be</a>
+                    <div id="toBeReplaced" > <h3> . . . .</h3></div>
               </div>
           </div>
           <div class="card mt-3">
@@ -219,7 +221,8 @@ body::before {
                   Online Payment Gateway<br>
                   Financial Management<br>
                   </p>
-                  <a href="#" class="btn btn-primary">Purchase</a>
+                  <a href="#" class="btn btn-primary" id="replaceButton2">Price will be</a>
+                    <div id="toBeReplaced" > <h3> . . . .</h3></div>
               </div>
           </div>
       </div>
@@ -309,12 +312,29 @@ body::before {
     </div>
   </div>
   <script>
-    // dom attribute modification
-    $(document).ready(function () {
-        $('#modifyLinkButton').on('click', function () {
-          $('#myLink').attr('href', 'login.html');
-        });
-      });
+   // DOM modification 1
+   $(document).ready(function () {
+    $('#replaceButton').on('click', function () {
+      var replacementElement = $('<h3> <br> RS 30000.00/month</h3>');
+      $('#toBeReplaced').replaceWith(replacementElement);
+    });
+  });
+
+  // DOM modification 2
+  $(document).ready(function () {
+    $('#replaceButton1').on('click', function () {
+      var replacementElement = $('<h3> <br> RS 40000.00/month</h3>');
+      $('#toBeReplaced').replaceWith(replacementElement);
+    });
+  });
+
+  // DOM modification 3
+  $(document).ready(function () {
+    $('#replaceButton2').on('click', function () {
+      var replacementElement = $('<h3> <br> RS 50000.00/month</h3>');
+      $('#toBeReplaced').replaceWith(replacementElement);
+    });
+  });
       
       </script>
 </body>
