@@ -1,6 +1,5 @@
 const express = require('express');
 const mysql = require('mysql2');
-const path = require('path');
 const bodyParser = require('body-parser');
 const app = express();
 const PORT = 3000;
@@ -25,18 +24,6 @@ connection.connect((err) => {
 // Serve static files from the root directory
 app.use(express.static(__dirname));
 app.use(bodyParser.urlencoded({ extended: true }));
-
-// Define routes to fetch data from your database
-app.get('/api/students', (req, res) => {
-  connection.query('SELECT * FROM students', (error, results) => {
-    if (error) {
-      console.error('Error executing MySQL query:', error);
-      res.status(500).send('Internal Server Error');
-    } else {
-      res.json(results);
-    }
-  });
-});
 
 // Handle form submission
 app.post('/api/students/create', (req, res) => {
