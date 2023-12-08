@@ -237,19 +237,18 @@ body::before {
         integrity="sha384-xx2FVHkALB1/lacGzJZyO1UqnG2HJ3Jj3ZkqmkLzjHpzE+vwuGMPIswdUHaBHzFj"
         crossorigin="anonymous"></script>
 
-    <script>
-        $(document).ready(function () {
-            // Hover effect for social media icons in footer column 4
-            $('.footer-col-4 ul li').hover(function () {
-                $(this).css('color', '#fff'); // Change color on hover
-            }, function () {
-                $(this).css('color', '#8a8a8a'); // Restore original color on hover out
+        <p class="special">tik tik</p>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+          $(document).ready(function(){
+            $(".footer-col-4 ul li").hover(function(){
+              $(this).css("background-color", "yellow");
+            }, function(){
+              $(this).css("background-color", "pink");
             });
-
-            // Slide up animation for the card-body element
-            $("#myElement").slideUp(500);
-        });
-    </script>
+          });
+        </script>
+    
 
 
 </body>
